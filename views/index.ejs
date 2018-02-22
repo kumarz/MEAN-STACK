@@ -1,0 +1,37 @@
+<% include header/header %>
+<h1><%=title %></h1>
+
+<form method="POST" action="/people/add" >
+    <label> Name</label>
+    <input type="text" name="name" />
+    <br>
+    <label>age</label>
+    <input type="text" name="age" />
+    <br>
+    <label> Gender</label>
+    <input type="text" name="sex" />
+    <br>
+    <label> DOB</label>
+    <input type="text" name="DOB" />
+    <input type="submit" value="Submit" />
+</form>
+
+<ul>
+    <% errors.forEach(function(error){ %>
+        <li>
+            <%= error.msg %>
+        </li>
+
+    <%}) %>
+</ul>
+
+<ul>
+    <% people.forEach(function(person){ %>
+        <li>
+            <%= person.name %> <%= person.age %> <%= person.sex %> <%= person.DOB %> <a href="#" class="deleteUser" data-id="<%= person._id %>" > Delete</a>
+        </li>
+
+    <%}) %>
+</ul>
+
+<% include footer/footer %>
